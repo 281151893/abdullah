@@ -119,15 +119,13 @@ questions = {
         ("What is the chemical symbol for water?", "H2O"),
         ("What is the chemical symbol for nitrogen?", "N"),
     ],
-    "Science": [
-        ("What is the chemical symbol for water?", "H2O"),
-        ("What is the chemical symbol for nitrogen?", "N"),
-    ],
+    # "Science" key appeared twice, we need to remove the duplicate
 }
 
 hints = {
     "Science": [
-        # Pair each question with a corresponding hint.
+        ("The chemical symbol for water is made up of two elements, one of which is hydrogen."),
+        ("The chemical symbol for nitrogen is a single letter."),
     ],
     # Repeat for other categories as needed.
 }
@@ -144,11 +142,8 @@ def select_random_question(category):
     Returns:
     - tuple: A tuple containing the selected question (str) and its corresponding answer (str).
     """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
+    question = random.choice(questions[category])
+    return question
 
 #---------------------------------------
 
@@ -163,13 +158,9 @@ def check_answer(player_answer, correct_answer):
     Returns:
     - bool: True if the answers match, False otherwise.
     """
-    #------------------------
-    if player_answer==correct_answer:
-        return True 
+    if player_answer.strip().upper() == correct_answer.upper():  # case insensitive comparison
+        return True
     return False
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
 
 #---------------------------------------
 
@@ -184,11 +175,8 @@ def remove_question(category, question):
     Returns:
     - None
     """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
+    if question in questions[category]:
+        questions[category].remove(question)
 
 #---------------------------------------
 
@@ -202,11 +190,9 @@ def display_question_and_accept_answer(question):
     Returns:
     - str: The player's answer to the question.
     """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
+    print(question)
+    player_answer = input("Your answer: ")
+    return player_answer
 
 #---------------------------------------
 
@@ -221,11 +207,8 @@ def provide_hint(category, question):
     Returns:
     - str: The hint for the given question.
     """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
+    index = questions[category].index(question)
+    return hints[category][index]
 
 #---------------------------------------
 
@@ -239,10 +222,7 @@ def display_correct_answer(correct_answer):
     Returns:
     - None
     """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
+    print(f"The correct answer was: {correct_answer}")
 
 #---------------------------------------
+
