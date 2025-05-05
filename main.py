@@ -113,136 +113,74 @@ def restart_or_exit():
 
 import random
 
-# Simplified example with one category. Expand as needed.
+# Questions and answers for categories
 questions = {
     "Science": [
         ("What is the chemical symbol for water?", "H2O"),
         ("What is the chemical symbol for nitrogen?", "N"),
+        ("What is the atomic number of hydrogen?", "1"),
+        ("What planet is known as the Red Planet?", "Mars")
     ],
-    "Science": [
-        ("What is the chemical symbol for water?", "H2O"),
-        ("What is the chemical symbol for nitrogen?", "N"),
+    "History": [
+        ("Who was the first President of the United States?", "George Washington"),
+        ("In what year did World War II end?", "1945"),
+        ("Who discovered America?", "Christopher Columbus"),
+        ("What ancient civilization built the pyramids?", "Egyptians")
     ],
+    "Geography": [
+        ("What is the capital of France?", "Paris"),
+        ("Which continent is Egypt located in?", "Africa"),
+        ("What is the longest river in the world?", "Amazon"),
+        ("Which ocean is the largest?", "Pacific")
+    ]
 }
 
 hints = {
     "Science": [
-        # Pair each question with a corresponding hint.
+        "The chemical symbol for water is made up of two elements, one of which is hydrogen.",
+        "The chemical symbol for nitrogen is a single letter.",
+        "Hydrogen is the first element on the periodic table.",
+        "It is the planet closest to Earth."
     ],
-    # Repeat for other categories as needed.
+    "History": [
+        "He was the first president of the USA and led during the American Revolution.",
+        "The war ended in the mid-1940s.",
+        "He sailed across the Atlantic Ocean in 1492.",
+        "They were located near the Nile River."
+    ],
+    "Geography": [
+        "It is a famous European city known for the Eiffel Tower.",
+        "It's a country known for the Sahara Desert.",
+        "It flows through South America.",
+        "This ocean covers more than a third of the Earth's surface."
+    ]
 }
 
-#---------------------------------------
-
 def select_random_question(category):
-    """
-    Selects a random question from the specified category.
-
-    Parameters:
-    - category (str): The category from which to select a question.
-
-    Returns:
-    - tuple: A tuple containing the selected question (str) and its corresponding answer (str).
-    """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
-
-#---------------------------------------
+    """ Selects a random question from the specified category. """
+    question = random.choice(questions[category])
+    return question
 
 def check_answer(player_answer, correct_answer):
-    """
-    Checks if the player's answer matches the correct answer.
-
-    Parameters:
-    - player_answer (str): The answer provided by the player.
-    - correct_answer (str): The correct answer to the question.
-
-    Returns:
-    - bool: True if the answers match, False otherwise.
-    """
-    #------------------------
-    if player_answer==correct_answer:
-        return True 
-    return False
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
-
-#---------------------------------------
+    """ Checks if the player's answer matches the correct answer. """
+    return player_answer.strip().lower() == correct_answer.lower()
 
 def remove_question(category, question):
-    """
-    Removes a question from the list once it has been asked.
-
-    Parameters:
-    - category (str): The category from which to remove the question.
-    - question (str): The question to be removed.
-
-    Returns:
-    - None
-    """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
-
-#---------------------------------------
+    """ Removes the question from the list once it has been asked. """
+    questions[category].remove(question)
 
 def display_question_and_accept_answer(question):
-    """
-    Displays a question to the player and accepts their answer via input.
-
-    Parameters:
-    - question (str): The question to be displayed.
-
-    Returns:
-    - str: The player's answer to the question.
-    """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
-
-#---------------------------------------
+    """ Displays a question and accepts the player's answer. """
+    print(question[0])
+    player_answer = input("Your answer: ")
+    return player_answer
 
 def provide_hint(category, question):
-    """
-    Provides a hint for the given question based on its category.
-
-    Parameters:
-    - category (str): The category of the question.
-    - question (str): The question for which to provide a hint.
-
-    Returns:
-    - str: The hint for the given question.
-    """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
-
-#---------------------------------------
+    """ Provides a hint for the given question. """
+    index = questions[category].index(question)
+    return hints[category][index]
 
 def display_correct_answer(correct_answer):
-    """
-    Displays the correct answer if the player's answer is incorrect.
+    """ Displays the correct answer if the player was incorrect. """
+    print(f"The correct answer was: {correct_answer}")
 
-    Parameters:
-    - correct_answer (str): The correct answer to the question.
-
-    Returns:
-    - None
-    """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
-
-#---------------------------------------
